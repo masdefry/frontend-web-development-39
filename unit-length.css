@@ -1,0 +1,26 @@
+html {
+  font-size: 10px;
+}
+
+#section-01 {
+  font-size: 1.5em;
+}
+
+#section-01 > h1 {
+  font-size: 2em;
+}
+
+#section-02 > h2 {
+  font-size: 5rem;
+}
+
+#section-03 {
+  width: 50vw;
+  height: 50vh;
+  background-color: gray;
+}
+
+#section-04{
+    width: 100vmax;
+    background-color: antiquewhite;
+}
