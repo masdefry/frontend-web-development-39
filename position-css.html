@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="position-css.css" />
+  </head>
+  <body>
+    <!-- 
+        RELATIVE
+        Elemen tetap berada dalam alur normal dokumen, 
+        tetapi bisa digeser relatif terhadap posisi aslinya.
+
+        🔹 Karakteristik
+            > Masih mempertahankan ruang aslinya
+            > Bisa menggunakan top, left, right, bottom
+            > Sering di jadikan referensi parent untuk position absolute
+    -->
+    <section id="section-01">
+      <div>01</div>
+      <div>02</div>
+      <div>03</div>
+    </section>
+
+    <!-- 
+        ABSOLUTE
+        Elemen keluar dari posisi normal dan 
+        diposisikan relatif terhadap parent terdekat 
+        yang memiliki position selain static.    
+
+        🔹 Karakteristik
+            > Tidak mempertahankan ruang asli nya (keluar dari normal flow)
+            > Bisa dikontrol penuh dengan top, left, dll
+            > Jika tidak ada parent ber-position non-static → relatif ke <body>
+    -->
+    <section id="section-02">
+      <div>01</div>
+      <div>02</div>
+      <div>03</div>
+    </section>
+
+    <!-- 
+        FIXED
+        Elemen diposisikan relatif terhadap viewport (layar browser).
+
+        🔹 Karakteristik
+            > Tidak terpengaruh scroll
+            > Selalu berada di posisi yang sama di layar
+            > Keluar dari normal flow
+    -->
+    <nav id="navbar">
+        Logo. 
+    </nav>
+
+    <!-- <div> // -> relative
+      <img />
+      <p>70%</p> -> absolute
+    </div> -->
+
+    <!-- 
+        Inline Element  : Lebar dan tinggi nya mengikuti content
+        Block Element   : Lebar sesuai viewport dan tinggi nya mengikuti content
+    -->
+    <div id="div-01">
+        .
+    </div>
+    <div id="div-01">
+        .
+    </div>
+    <div id="div-01">
+        .
+    </div>
+    <span style="background-color: aqua;">
+        Purwadhika
+    </span>
+    <span style="background-color: aqua;">
+        Purwadhika
+    </span>
+    <span style="background-color: aqua;">
+        Purwadhika
+    </span>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+#section-01 > div {
+  width: 150px;
+  height: 150px;
+  background-color: salmon;
+}
+
+#section-01 > div:nth-child(2) {
+  background-color: blueviolet;
+  position: relative;
+  top: 10px;
+  left: 100px;
+}
+
+#section-02 {
+  margin-top: 100px;
+  position: relative;
+  border: 1px solid black;
+}
+
+#section-02 > div {
+  width: 150px;
+  height: 150px;
+  background-color: bisque;
+}
+
+#section-02 > div:nth-child(2) {
+  background-color: burlywood;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+#navbar{
+    background-color: gray;
+    height: 30px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+}
+
+#div-01{
+    background-color: red;
+}
