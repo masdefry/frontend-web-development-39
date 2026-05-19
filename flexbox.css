@@ -1,8 +1,0 @@
-#parent {
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  background-color: gray;
-  justify-content: space-between;
-  align-items: center;
-}
