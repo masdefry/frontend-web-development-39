@@ -5,6 +5,8 @@ import HomePage from './App';
 import ProfilePage from './pages/profile';
 import LoginPage from './pages/login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ResponsiveTailwindPage from './pages/responsive-tailwind';
+import TestimonialsPage from './pages/testimonials';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,6 +15,8 @@ createRoot(document.getElementById('root')!).render(
         <Route index element={<HomePage />} />
         <Route path='login' element={<LoginPage />} />
         <Route path='profile-user' element={<ProfilePage />} />
+        <Route path='/responsive-tailwind' element={<ResponsiveTailwindPage />} />
+        <Route path='/testimonials' element={<TestimonialsPage />} />
         {/* 
           <Route path='login'>
             <Route path='user' element={<LoginPage />} />
