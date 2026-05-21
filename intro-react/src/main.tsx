@@ -7,6 +7,7 @@ import LoginPage from './pages/login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ResponsiveTailwindPage from './pages/responsive-tailwind';
 import TestimonialsPage from './pages/testimonials';
+import UseRefPage from './pages/use-ref';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='profile-user' element={<ProfilePage />} />
         <Route path='/responsive-tailwind' element={<ResponsiveTailwindPage />} />
         <Route path='/testimonials' element={<TestimonialsPage />} />
+        <Route path='/use-ref' element={<UseRefPage />} />
         {/* 
           <Route path='login'>
             <Route path='user' element={<LoginPage />} />
