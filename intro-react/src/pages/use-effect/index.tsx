@@ -2,14 +2,22 @@
     useEffect   : Untuk meng-handle side effect process. Salah 1 contohnya sering digunakan untuk proses pengambilan data ke API (fetching data). Sering dikenal dengan istilah life cycle method.
 */
 
+import CardPost from '@/features/use-effect/components/CardPost';
 import { useEffect, useState } from 'react';
+
+export type Posts = {
+    userId: number; 
+    id: number; 
+    title: string; 
+    body: string; 
+}
 
 export default function UseEffectPage() {
   useEffect(() => {
     onFetchPosts();
   }, []);
 
-  const [posts, setPosts] = useState<any>([]);
+  const [posts, setPosts] = useState<Posts[]>([]);
   const onFetchPosts = async () => {
     try {
       const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -26,16 +34,12 @@ export default function UseEffectPage() {
 
   return (
     <>
-      {posts?.map((post) => (
-        <div className='card w-96 bg-base-100 card-xs shadow-sm'>
-          <div className='card-body'>
-            <h2 className='card-title'>{post?.title}</h2>
-            <p>{post?.body}</p>
-            <div className='justify-end card-actions'>
-              <button className='btn btn-primary'>See Post</button>
-            </div>
-          </div>
-        </div>
+      {posts?.map((post: Posts) => (
+        <CardPost 
+          key={post?.id}
+          title={post?.title}
+          body={post?.body}
+        />
       ))}
     </>
   );
