@@ -2,7 +2,7 @@ import type { Testimonials } from "../types/testimonials-type";
 
 export default function TestimonialCard(props: Testimonials) {
   return (
-    <div className={`p-10 rounded-md ${props?.style}`} key={props?.userName}>
+    <div className={`p-10 rounded-md ${props?.style}`}>
       {/* Card: Header */}
       <div className='flex items-center gap-3'>
         <div className='w-15 h-15'>

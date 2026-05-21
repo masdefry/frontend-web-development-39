@@ -63,6 +63,7 @@ export default function TestimonialsPage() {
             highlight={item?.highlight}
             description={item?.description}
             status={item?.status}
+            key={item?.userName}
           />
         ))}
       </div>
