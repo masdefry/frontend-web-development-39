@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import HomePage from './App';
@@ -10,6 +9,7 @@ import TestimonialsPage from './pages/testimonials';
 import UseRefPage from './pages/use-ref';
 import UseStatePage from './pages/use-state';
 import UseEffectPage from './pages/use-effect';
+import NetworkCallPage from './pages/network-call';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
@@ -23,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='/use-ref' element={<UseRefPage />} />
       <Route path='/use-state' element={<UseStatePage />} />
       <Route path='/use-effect' element={<UseEffectPage />} />
+      <Route path='/network-call' element={<NetworkCallPage />} />
       {/* 
           <Route path='login'>
             <Route path='user' element={<LoginPage />} />
