@@ -1,28 +1,26 @@
-import axios from 'axios';
+import axiosInstance from '@/utils/axios-instance';
 import { useEffect, useState } from 'react';
-
-const BACKENDLESS_APPLICATION_ID = '80900C75-16BB-41B9-A507-BFBEB18800DB';
-const BACKENDLESS_API_KEY = 'DFDA6C49-11F9-4C6A-80AC-502464A70582';
-
 export default function NetworkCallPage() {
-  useEffect(() => {
-    onGetProducts();
-  }, []);
-
   const [products, setProducts] = useState<any>([]);
 
   const onGetProducts = async () => {
     try {
       // await fetch('url', { method: 'GET' })
-      const res = await axios.get(
-        `https://api.backendless.com/${BACKENDLESS_APPLICATION_ID}/${BACKENDLESS_API_KEY}/data/Products`,
-      );
+    //   const res = await axios.get(
+    //     `${import.meta.env.VITE_BACKENDLESS_API_URL}/${import.meta.env.VITE_BACKENDLESS_APPLICATION_ID}/${import.meta.env.VITE_BACKENDLESS_API_KEY}/data/Products`,
+    //   );
+
+      const res = await axiosInstance.get('data/Products')
       console.log(res.data);
       setProducts(res.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    onGetProducts();
+  }, []);
 
   return (
     <>
