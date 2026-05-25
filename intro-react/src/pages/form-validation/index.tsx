@@ -1,34 +1,18 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import createProductSchema from '@/features/form-validation/schemas/createProductSchema';
+import useCreateProduct from "@/features/form-validation/hooks/useCreateProduct";
+import { Toaster } from "react-hot-toast";
 
-type InputCreateProduct = {
-  name: string;
-  price: number;
-  stocks: number;
-  imageUrl: string;
-};
 
 export default function FormValidationPage() {
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<InputCreateProduct>({
-    resolver: zodResolver(createProductSchema),
-  });
-
-  const onCreateProduct = async ({
-    name,
-    price,
-    stocks,
-    imageUrl,
-  }: InputCreateProduct) => {
-    console.log('>>>');
-  };
+    register, 
+    handleSubmit, 
+    errors, 
+    onCreateProduct
+  } = useCreateProduct()
 
   return (
     <>
+      <Toaster />
       <div className='flex justify-center'>
         <form onSubmit={handleSubmit(onCreateProduct)} className='w-lg'>
           <fieldset className='fieldset'>
