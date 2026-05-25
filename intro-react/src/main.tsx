@@ -10,6 +10,7 @@ import UseRefPage from './pages/use-ref';
 import UseStatePage from './pages/use-state';
 import UseEffectPage from './pages/use-effect';
 import NetworkCallPage from './pages/network-call';
+import FormValidationPage from './pages/form-validation';
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='/use-state' element={<UseStatePage />} />
       <Route path='/use-effect' element={<UseEffectPage />} />
       <Route path='/network-call' element={<NetworkCallPage />} />
+      <Route path='/form-validation' element={<FormValidationPage />} />
       {/* 
           <Route path='login'>
             <Route path='user' element={<LoginPage />} />
