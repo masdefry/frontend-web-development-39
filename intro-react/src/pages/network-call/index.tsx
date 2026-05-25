@@ -1,35 +1,9 @@
-import type { NetworkCall } from '@/features/network-call/types/networkcall-type';
-import axiosInstance from '@/utils/axios-instance';
-import { AxiosError, type AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import useGetProducts from '@/features/network-call/hooks/useGetProducts';
+import { Toaster } from 'react-hot-toast';
 export default function NetworkCallPage() {
-  const [products, setProducts] = useState<NetworkCall[]>([]);
-  const [getProductsLoading, setGetProductsLoading] = useState<boolean>(true);
+  const { getProductsLoading, products } = useGetProducts();
 
-  const onGetProducts = async () => {
-    try {
-      // await fetch('url', { method: 'GET' })
-      //   const res = await axios.get(
-      //     `${import.meta.env.VITE_BACKENDLESS_API_URL}/${import.meta.env.VITE_BACKENDLESS_APPLICATION_ID}/${import.meta.env.VITE_BACKENDLESS_API_KEY}/data/Products`,
-      //   );
-
-      const res: AxiosResponse<NetworkCall[]> =
-        await axiosInstance.get('data/Products');
-
-      setProducts(res.data);
-    } catch (error) {
-      if (error instanceof AxiosError)
-        toast.error(error?.response?.data?.message);
-    } finally {
-      setGetProductsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    onGetProducts();
-  }, []);
-
+  // Conditional Rendering
   if (getProductsLoading) return <h1>Loading...</h1>;
 
   return (
