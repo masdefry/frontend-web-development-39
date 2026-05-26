@@ -22,5 +22,6 @@ export default function useGetTodos() {
 
   return {
     todos,
+    onGetTodos
   };
 }

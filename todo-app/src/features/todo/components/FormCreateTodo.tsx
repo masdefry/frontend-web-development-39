@@ -1,13 +1,8 @@
-import useCreateTodo from "../hooks/useCreateTodo";
+import useCreateTodo from '../hooks/useCreateTodo';
 
 export default function FormCreateTodo() {
-  const {
-    onCreateTodo, 
-    register, 
-    errors, 
-    createTodoLoading, 
-    handleSubmit
-  } = useCreateTodo()
+  const { onCreateTodo, register, errors, createTodoLoading, handleSubmit } =
+    useCreateTodo();
 
   return (
     <>
@@ -26,16 +21,18 @@ export default function FormCreateTodo() {
             placeholder='index.php'
           />
         </label>
-        <p className='text-white font-bold text-xs'>
+        <p
+          className={`text-white text-xs ${errors?.title ? 'bg-red-500' : ''} rounded-full px-3 py-1 w-fit mt-1`}
+        >
           {errors?.title && errors?.title?.message}
           {/* {errors?.title? errors?.title?.message : ''} */}
         </p>
         <button
           disabled={createTodoLoading}
           type='submit'
-          className={`btn ${createTodoLoading? 'bg-indigo-100':'bg-white'} text-indigo-500 mt-3 w-full`}
+          className={`btn ${createTodoLoading ? 'bg-indigo-100' : 'bg-white'} text-indigo-500 mt-3 w-full`}
         >
-          {createTodoLoading? 'Loading...' : 'Create'}
+          {createTodoLoading ? 'Loading...' : 'Create'}
         </button>
       </form>
     </>
