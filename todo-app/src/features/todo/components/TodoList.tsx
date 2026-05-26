@@ -1,12 +1,16 @@
+import type { Todo } from '../types/todo-type';
 import ListCard from './ListCard';
 import TodoFilter from './TodoFilter';
-import useGetTodos from '../hooks/useGetTodos';
 import { Toaster } from 'react-hot-toast';
-import useDeleteTodo from '../hooks/useDeleteTodo';
-export default function TodoList() {
-  const { todos, onGetTodos } = useGetTodos();
-  const { confirmationBox } = useDeleteTodo(onGetTodos);
 
+type TodoListProps = {
+  todos: Todo[];
+  confirmationBox: (objectId: string) => void;
+};
+export default function TodoList({
+  todos,
+  confirmationBox,
+}: TodoListProps) {
   return (
     <>
       <Toaster />

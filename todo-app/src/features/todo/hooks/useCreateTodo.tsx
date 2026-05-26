@@ -5,7 +5,7 @@ import { createTodoSchema } from '../schemas/createTodoSchema';
 import { AxiosError } from 'axios';
 import { useState } from 'react';
 import createTodoApi from '../api/createTodoApi';
-export default function useCreateTodo() {
+export default function useCreateTodo(onGetTodos: () => void) {
   const [createTodoLoading, setCreateTodoLoading] = useState<boolean>(false);
   const {
     register,
@@ -23,7 +23,7 @@ export default function useCreateTodo() {
       setCreateTodoLoading(true);
 
       const createdTodo = await createTodoApi({title, isCompleted})
-
+      await onGetTodos();
       alert(`Create todo: ${createdTodo?.title} is successfull`);
     } catch (error) {
       if (error instanceof AxiosError) alert(error?.response?.data?.message);
