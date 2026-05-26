@@ -2,7 +2,7 @@ import { MdOutlineClose } from 'react-icons/md';
 import type { Todo } from '../types/todo-type';
 
 type ListCardProps = Pick<Todo, 'title' | 'isCompleted' | 'objectId'> & {
-  onDeleteTodo: (objectId: string) => void;
+  onDeleteTodo?: (objectId: string) => void;
   confirmationBox: (objectId: string) => void;
 };
 export default function ListCard(props: ListCardProps) {
