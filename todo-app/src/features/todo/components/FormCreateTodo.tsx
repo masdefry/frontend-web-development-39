@@ -1,41 +1,13 @@
-import { useForm } from 'react-hook-form';
-import type { InputCreateTodo, Todo } from '../types/todo-type';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { createTodoSchema } from '../schemas/createTodoSchema';
-import axiosInstance from '@/utils/axios-instance';
-import { AxiosError, type AxiosResponse } from 'axios';
-import { useState } from 'react';
+import useCreateTodo from "../hooks/useCreateTodo";
 
 export default function FormCreateTodo() {
-  const [createTodoLoading, setCreateTodoLoading] = useState<boolean>(false);
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<InputCreateTodo>({
-    resolver: zodResolver(createTodoSchema),
-    defaultValues: {
-      isCompleted: false,
-    },
-  });
-
-  const onCreateTodo = async ({ title, isCompleted }: InputCreateTodo) => {
-    try {
-      setCreateTodoLoading(true);
-
-      const res: AxiosResponse<Todo, InputCreateTodo> =
-        await axiosInstance.post('data/Todos', {
-          title,
-          isCompleted,
-        });
-
-      alert(`Create todo: ${res?.data?.title} is successfull`);
-    } catch (error) {
-      if (error instanceof AxiosError) alert(error?.response?.data?.message);
-    } finally {
-      setCreateTodoLoading(false);
-    }
-  };
+    onCreateTodo, 
+    register, 
+    errors, 
+    createTodoLoading, 
+    handleSubmit
+  } = useCreateTodo()
 
   return (
     <>
