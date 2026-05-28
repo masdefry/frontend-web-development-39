@@ -1,20 +1,10 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type Users = {
-  accountType: string;
-  blUserLocale: string;
-  created: number;
-  email: string;
-  lastLogin: number;
   name: string;
-  oAuthIdentities: null;
+  email: string;
   objectId: string;
-  ownerId: string;
-  role: string;
-  socialAccount: string;
-  updated: null;
-  'user-token': string;
-  userStatus: string;
 };
 
 type UseAuthStore = {
@@ -22,27 +12,26 @@ type UseAuthStore = {
   setAuth: (payload: Users) => void;
 };
 
-const useAuthStore = create<UseAuthStore>()((set) => ({
-  users: {
-    accountType: '',
-    blUserLocale: '',
-    created: 0,
-    email: '',
-    lastLogin: 0,
-    name: '',
-    oAuthIdentities: null,
-    objectId: '',
-    ownerId: '',
-    role: '',
-    socialAccount: '',
-    updated: null,
-    'user-token': '',
-    userStatus: '',
-  },
-  setAuth: (payload: Users) =>
-    set((state) => ({
-      users: payload,
-    })),
-}));
+const useAuthStore = create<UseAuthStore>()(
+  persist(
+    (set) => ({
+      users: {
+        name: '',
+        email: '',
+        objectId: '',
+      },
+      setAuth: (payload: Users) =>
+        set((_) => ({
+          users: payload,
+        })),
+    }),
+    {
+      name: 'users',
+      partialize: (state) => ({
+        users: { objectId: state?.users?.objectId },
+      }),
+    },
+  ),
+);
 
 export default useAuthStore;

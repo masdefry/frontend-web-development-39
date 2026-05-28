@@ -29,6 +29,7 @@ export default function Navbar() {
             </details>
           </li>
           <li>{users?.name}</li>
+          <li>{users?.['user-token']}</li>
         </ul>
       </div>
     </div>

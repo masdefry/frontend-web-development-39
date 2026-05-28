@@ -26,8 +26,13 @@ export default function LoginPage() {
         password,
       });
 
-      toast.success('Login user successfully')
-      setAuth(res?.data);
+      toast.success('Login user successfully');
+
+      setAuth({
+        name: res?.data?.name,
+        email: res?.data?.email,
+        objectId: res?.data?.objectId,
+      });
       navigate('/');
     } catch (error) {
       console.log(error);
