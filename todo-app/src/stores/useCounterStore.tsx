@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type UseCounterStore = {
   counter: number;
@@ -6,20 +7,27 @@ type UseCounterStore = {
   decrease: () => void;
 };
 
-const useCounterStore = create<UseCounterStore>()((set) => ({
-  counter: 0, // Property (Untuk menyimpan data)
-  increase: () =>
-    set((state) => {
-      if (state?.counter < 10) return { counter: state?.counter + 1 };
+const useCounterStore = create<UseCounterStore>()(
+  persist(
+    (set) => ({
+      counter: 0, // Property (Untuk menyimpan data)
+      increase: () =>
+        set((state) => {
+          if (state?.counter < 10) return { counter: state?.counter + 1 };
 
-      return state;
-    }),
-  decrease: () =>
-    set((state) => {
-      if (state?.counter > 0) return { counter: state?.counter - 1 };
+          return state;
+        }),
+      decrease: () =>
+        set((state) => {
+          if (state?.counter > 0) return { counter: state?.counter - 1 };
 
-      return state;
+          return state;
+        }),
     }),
-}));
+    {
+      name: 'counter',
+    },
+  ),
+);
 
 export default useCounterStore;
