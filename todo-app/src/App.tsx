@@ -17,7 +17,7 @@ export default function HomePage() {
           <div className="bg-[url('/images/background-banner.png')] bg-center h-50">
             <div className='bg-linear-to-br from-indigo-500/70 via-purple-500/70 to-pink-500/10 h-50'></div>
           </div>
-          <div className='absolute top-10 flex justify-center'>
+          <div className='absolute top-10 flex justify-center w-full'>
             <div className='w-72 md:w-96'>
               <HeaderTitle />
               <FormCreateTodo

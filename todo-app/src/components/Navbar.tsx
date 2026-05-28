@@ -1,8 +1,14 @@
+import useAuthStore from '@/stores/useAuthStore';
+
 export default function Navbar() {
+  const { users } = useAuthStore();
+  console.log('Navbar');
+  console.log(users);
+
   return (
     <div className='navbar bg-base-100 shadow-sm'>
       <div className='flex-1'>
-        <a className='btn btn-ghost text-xl'>daisyUI</a>
+        <a className='btn btn-ghost text-xl'>todo-app</a>
       </div>
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1'>
@@ -22,6 +28,7 @@ export default function Navbar() {
               </ul>
             </details>
           </li>
+          <li>{users?.name}</li>
         </ul>
       </div>
     </div>
